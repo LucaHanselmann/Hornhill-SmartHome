@@ -1,0 +1,235 @@
+Widget Input:
+<html>
+<style>
+.inputstyle {
+background-color: rgb(34, 51, 68);
+}
+  
+.inputbutton {
+	background-color: rgb(34, 51, 68);
+}
+
+.inputbutton:hover {
+  background-color: grey;
+}
+
+.inputbutton:active {
+  background-color: #0075ff;
+}
+</style>
+<p>{{config.header}}</p>
+<input class="inputstyle" type="text" placeholder="{{config.placeholder}}" ng-model="input">
+<input class="inputbutton" type="submit" value="Submit" ng-click="sendCmd(config.action_item, input)">
+<p><br>{{config.subtitle}}</p>
+  
+</html>   
+
+Widget Inputdate:
+<html>
+<style>
+.inputstyle {
+background-color: rgb(34, 51, 68);
+}
+  
+.inputbutton {
+background-color: rgb(34, 51, 68);
+}
+</style>
+ 
+<p>{{config.header}}</p>
+<label for="input">Input:</label>
+<input class="inputstyle" type="date" value="2023-01-01" ng-model="input">
+<input class="inputbutton" type="submit" value="Submit" ng-click="sendCmd(config.action_item, input)">
+<p>{{config.subtitle}}</p>
+  
+</html>
+
+Widget Inputtoggle:
+<html>
+<style>
+.inputstyle {
+background-color: rgb(34, 51, 68);
+}
+  
+.inputbutton {
+background-color: rgb(34, 51, 68);
+}
+  
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 15px;
+}
+
+
+ 
+</style>
+ 
+<p>{{config.header}}</p>
+<div class="slider-container">	
+  <input class="slider" type="range" min="0" max="2" step="1.0" ng-model="input" list="values" ng-click="sendCmd(config.action_item, input)">
+	<div class="slider-labels">
+    <label>0</label>
+    <label>1</label>
+    <label>2</label>
+  </div>
+</div>
+<p>{{config.subtitle}}</p>
+  
+</html>  
+
+Widget Inputbarchart:
+<style>
+.chart {
+  position: relative;
+  height: 500px;
+  width: 100%;
+}
+
+.y-axis {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: -8%;
+  width: 10px;
+  border-right: 1px solid black;
+}
+
+.bar-container {
+  position: absolute;
+  left: 20px;
+  right: 20px;
+  top: 0;
+  bottom: 20px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.bar {
+      width: 13%;
+      height: 0;
+      background-color: orange;
+      margin-right: 100px;
+      position: relative;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  border: 2px solid black;
+    }
+  
+.x-axis {
+  position: absolute;
+  left: 10px;
+  bottom: 15%;
+  right: 2%;
+  height: 0;
+  border-top: 1px solid black;
+}
+  
+.label {
+      position: absolute;
+      bottom: -20px;
+      left: 0;
+      right: 0;
+      text-align: center;
+}
+
+.label2 {
+			position: absolute;
+      bottom: -40px;
+      left: 0;
+      right: 0;
+      text-align: center;
+  }
+
+.x-axis-label, .y-axis-label {
+  position: absolute;
+  font-size: 12px;
+}
+
+.x-axis-label {
+  bottom: 10%;
+  left: 94%;
+}
+
+.y-axis-label {
+  top: 100px;
+  left: 10px;
+}  
+
+</style>
+  
+<div class="chart">
+  <div class="y-axis"></div>
+    <div class="bar-container">
+      <div class="bar" style="height: calc(0.05%*({{itemValue(config.input1)}}+1/({{itemValue(config.input1)}}+{{itemValue(config.input2)}}+{{itemValue(config.input3)}}+{{itemValue(config.input4)}}+{{itemValue(config.input5)}}+{{itemValue(config.input6)}}+{{itemValue(config.input7)}}+{{itemValue(config.input8)}})))">
+        <div class="label">{{itemValue(config.input1)}}</div>
+          <div class="label2">Diese Woche</div>
+      </div>
+      <div class="bar" style="height: calc(0.05%*({{itemValue(config.input2)}}+1/({{itemValue(config.input1)}}+{{itemValue(config.input2)}}+{{itemValue(config.input3)}}+{{itemValue(config.input4)}}+{{itemValue(config.input5)}}+{{itemValue(config.input6)}}+{{itemValue(config.input7)}}+{{itemValue(config.input8)}})))">
+        <div class="label">{{itemValue(config.input2)}}</div>
+          <div class="label2">Letzte Woche</div>
+      </div>  
+      <div class="bar" style="height: calc(0.05%*({{itemValue(config.input3)}}+1/({{itemValue(config.input1)}}+{{itemValue(config.input2)}}+{{itemValue(config.input3)}}+{{itemValue(config.input4)}}+{{itemValue(config.input5)}}+{{itemValue(config.input6)}}+{{itemValue(config.input7)}}+{{itemValue(config.input8)}})))">
+        <div class="label">{{itemValue(config.input3)}}</div>
+          <div class="label2">Dieser Monat</div>
+      </div>
+      <div class="bar" style="height: calc(0.05%*({{itemValue(config.input4)}}+1/({{itemValue(config.input1)}}+{{itemValue(config.input2)}}+{{itemValue(config.input3)}}+{{itemValue(config.input4)}}+{{itemValue(config.input5)}}+{{itemValue(config.input6)}}+{{itemValue(config.input7)}}+{{itemValue(config.input8)}})))">
+        <div class="label">{{itemValue(config.input4)}}</div>
+          <div class="label2">Letzter Monat</div>
+      </div>
+      <div class="bar" style="height: calc(0.05%*({{itemValue(config.input5)}}+1/({{itemValue(config.input1)}}+{{itemValue(config.input2)}}+{{itemValue(config.input3)}}+{{itemValue(config.input4)}}+{{itemValue(config.input5)}}+{{itemValue(config.input6)}}+{{itemValue(config.input7)}}+{{itemValue(config.input8)}})))">
+        <div class="label">{{itemValue(config.input5)}}</div>
+          <div class="label2">Dieses Jahr</div>
+      </div>
+      <div class="bar" style="height: calc(0.05%*({{itemValue(config.input6)}}+1/({{itemValue(config.input1)}}+{{itemValue(config.input2)}}+{{itemValue(config.input3)}}+{{itemValue(config.input4)}}+{{itemValue(config.input5)}}+{{itemValue(config.input6)}}+{{itemValue(config.input7)}}+{{itemValue(config.input8)}})))">
+        <div class="label">{{itemValue(config.input6)}}</div>
+          <div class="label2">Letztes Jahr</div>
+      </div>
+    </div>
+  </div>
+  <div class="x-axis"></div>
+  <div class="x-axis-label">Erzeugter Strom</div>
+  <div class="y-axis-label">Angaben in <br>kW/h</div>
+</div>
+
+Widget Label:
+<p>{{config.text}}</p>
+<p>{{config.text2}}</p>
+
+Widget Inputtoggle2:
+<html>
+<style>
+.inputstyle {
+background-color: rgb(34, 51, 68);
+}
+  
+.inputbutton {
+background-color: rgb(34, 51, 68);
+}
+  
+.slider-labels {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 8px;
+  width: 98.9%;
+  font-size: 15px;
+}
+
+
+ 
+</style>
+ 
+<p>{{config.header}}</p>
+<div class="slider-container">	
+  <input class="slider" type="range" min="0" max="3" step="1.0" ng-model="input" list="values" ng-click="sendCmd(config.action_item, input)">
+	<div class="slider-labels">
+    <label>0</label>
+    <label>1</label>
+    <label>2</label>
+    <label>3</label>
+  </div>
+</div>
+<p>{{config.subtitle}}</p>
+  
+</html>  
